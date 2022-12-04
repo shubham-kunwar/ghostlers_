@@ -1,7 +1,12 @@
+
+
+
+
+
 import { ConnectWallet, useAddress, useContract, useContractRead, useContractWrite, Web3Button } from "@thirdweb-dev/react";
 import type { NextPage } from "next";
 
-
+import { Question } from "../components/faq";
 import { useState, useEffect } from 'react'
 
 import { config } from '../dapp.config'
@@ -25,34 +30,32 @@ const Mint: NextPage = () => {
 
 
     const { contract } = useContract(signatureDropAddress);
+    const { mutateAsync: WL_Mint_PH2, } = useContractWrite(contract, "WL_Mint_PH2")
 
-    const { mutateAsync: WL_Mint_PH1, } = useContractWrite(contract, "WL_Mint_PH1")
-    const { data: data1, isLoading } = useContractRead(contract, "whitelist_ph1", address)
-
+    const { data: data2 } = useContractRead(contract, "whitelist_ph2", address)
     const totalSupply = useContractRead(contract, "totalSupply")
     const maxSupply = useContractRead(contract, "maxSupply")?.data?.toNumber();
     const maxMintAmountPerTx = useContractRead(contract, "maxMintAmountPerTx")?.data?.toNumber();
     const nftMinted = totalSupply?.data?.toNumber();
 
+ 
 
 
 
     const myFunction = () => {
-
-        const isWhiteListedforPhase1 = data1;
-
+        const isWhiteListedforPhase2 = data2;
         if (address) {
 
-            if (isWhiteListedforPhase1) {
+            if (isWhiteListedforPhase2) {
                 return (
                     <Web3Button
                         contractAddress={signatureDropAddress}
                         action={(contract) => {
-                            mintNftPhase1()
+                            mintNftPhase2()
 
                         }}
                     >
-                        Mint Now (PH-1)
+                        Mint Now (PH-2)
                     </Web3Button>
                 )
             }
@@ -66,7 +69,6 @@ const Mint: NextPage = () => {
                     </>
                 )
             }
-
         }
 
 
@@ -81,26 +83,20 @@ const Mint: NextPage = () => {
 
 
 
-
-
-
-
-    const mintNftPhase1 = async () => {
-
+    const mintNftPhase2 = async () => {
         try {
             setStatus("Minting Your ghostlers... Confirm the Mint in Wallet.");
-            const isWhitelisted = await WL_Mint_PH1([mintAmount]);
+            const isWhitelisted = await WL_Mint_PH2([mintAmount]);
             setStatus(`Congratulation! You have successfully Minted Ghostlers. Visit opensea.io to view it. `);
-        }
-
-
-        catch (e) {
+            console.info("contract call successs", isWhitelisted?.receipt);
+        } catch (e) {
             ``
             //console.log(err.reason);
             setStatus(e.reason)
             //console.error("contract call failure", err.reason);
-        }
 
+
+        }
     }
 
 
@@ -243,7 +239,7 @@ const Mint: NextPage = () => {
                         </div>
 
 
-                        <span className="font-coiny text-xl  uppercase text-center bg-gradient-to-br from-brand-green to-brand-blue bg-clip-text text-transparent items-center mt-2">{status}</span>
+                        <span className="font-coiny text-xl uppercase text-center bg-gradient-to-br from-brand-green to-brand-blue bg-clip-text text-transparent items-center mt-2">{status}</span>
 
                         {/* Contract Address */}
                         <div className="border-t border-gray-800 flex flex-col items-center mt-2 py-2 w-full">
@@ -275,3 +271,17 @@ const Mint: NextPage = () => {
 
 
 export default Mint;
+
+
+
+
+
+
+
+
+
+
+
+
+
+

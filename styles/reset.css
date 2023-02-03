@@ -67,3 +67,6 @@ html {
     background: var(--clr-selection-bg);
     color: var(--clr-selection-text);
 }
+.my-border {
+    border-color: "#E6DDC4";
+}

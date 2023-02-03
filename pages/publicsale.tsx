@@ -34,33 +34,23 @@ const Mint: NextPage = () => {
 
     const { contract } = useContract(signatureDropAddress);
 
-    const { mutateAsync: WL_Mint, } = useContractWrite(contract, "WL_Mint")
-    
+    const { mutateAsync: WL_Mint, } = useContractWrite(contract, "Public_Sale")
+
 
     const totalSupply = useContractRead(contract, "totalSupply")
     const maxSupply = useContractRead(contract, "maxSupply")?.data?.toNumber();
     const maxMintAmountPerTx = useContractRead(contract, "maxMintAmountPerTx")?.data?.toNumber();
     const nftMinted = totalSupply?.data?.toNumber();
-   
-   
-   
-    const leaf = keccak256(address)
-    const proof = tree.getHexProof(leaf)
-    
-   console.log(root, "root")
-    console.log(keccak256(root), "root")
-    console.log("proof",proof.join(","))
-    console.log(tree.verify(proof, leaf, root)) // true
 
-    const [iswl, setwl] = useState(false)
-    const verifyproof = tree.verify(proof, leaf, root)
-  
+
+
+
 
     const myFunction = () => {
-        
+
         if (address) {
 
-            if (verifyproof==true) {
+           
                 return (
                     <Web3Button
                         contractAddress={signatureDropAddress}
@@ -69,21 +59,10 @@ const Mint: NextPage = () => {
 
                         }}
                     >
-                        Mint Now (PH-1)
+                        Mint Now (Public)
                     </Web3Button>
                 )
-            }
-            else {
-                return (
-                    <>
-                        <div style={{
-                            fontSize: "1em",
-                            height: "50px", minWidth: "200px"
-                        }} className="pl-4 pr-4  flex items-center justify-center text-brand-background hover:shadow-lg bg-white font-bold rounded-md">Not Whitelisted</div>
-                    </>
-                )
-            }
-        }
+            }          
 
 
         else {
@@ -119,7 +98,7 @@ const Mint: NextPage = () => {
 
     }
 
-  
+
 
 
     const incrementMintAmount = () => {
@@ -161,7 +140,7 @@ const Mint: NextPage = () => {
 
 
                 <div className="flex flex-col items-center justify-center h-full w-full px-2 md:px-10">
-                    <div style={{ backgroundColor:"rgb(24, 29, 49)" }} className="relative mt-10 z-1 md:max-w-3xl w-full bg-gray-900/90 filter backdrop-blur-sm rounded-md px-2 md:px-4 flex flex-col items-center">
+                    <div style={{ backgroundColor: "rgb(24, 29, 49)" }} className="relative mt-10 z-1 md:max-w-3xl w-full bg-gray-900/90 filter backdrop-blur-sm rounded-md px-2 md:px-4 flex flex-col items-center">
                         <Header />
                         <div className="items-center justify-center  transition duration-200 ease-in-out font-chalk  px-4 py-2 rounded-md text-sm text-white tracking-wide mt-2 uppercase">
                             <ConnectWallet colorMode="light" />
@@ -186,7 +165,7 @@ const Mint: NextPage = () => {
 
                             <div className="flex flex-col items-center w-full px-4 mt-8 md:mt-0">
                                 <div className="font-coiny flex items-center justify-between w-full">
-                                  
+
                                     <button
                                         className="w-14 h-10 md:w-16 md:h-12 flex items-center justify-center text-brand-background hover:shadow-lg bg-gray-300 font-bold rounded-md"
                                         onClick={decrementMintAmount}
@@ -230,7 +209,7 @@ const Mint: NextPage = () => {
                                         </svg>
                                     </button>
 
-                                  
+
                                 </div>
 
                                 <p className="text-sm text-pink-200 tracking-widest mt-3">
@@ -238,7 +217,7 @@ const Mint: NextPage = () => {
                                 </p>
 
                                 <div className="border-t border-b py-4 mt-8 w-full">
-                                    <div style={{ color:"#F1DBBF"}} className="w-full text-xl font-coiny flex items-center justify-between text-brand-yellow">
+                                    <div style={{ color: "#F1DBBF" }} className="w-full text-xl font-coiny flex items-center justify-between text-brand-yellow">
                                         <p>Total</p>
 
                                         <div className="flex items-center space-x-3">

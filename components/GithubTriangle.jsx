@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function ThirdwebGuideFooter() {
-    const url = "https://discord.gg/ghostlers";
+    const url = "https://anasah.io/";
     return (
         <>
             <div

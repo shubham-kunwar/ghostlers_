@@ -9,7 +9,7 @@ const Footer = () => {
             <footer className="border-t-2  border-x-2 rounded-3xl  md:border-t-4 md:border-x-4 new_footer_area bg_color_footer m-4">
                 <div className="  flex flex-col items-center mt-4 py-2 w-full">
 
-                    <h3 className="font-coiny text-2xl text-brand-pink uppercase mt-4">
+                    <h3 style={{ color: "rgb(103, 137, 131)" }} className="font-coiny text-2xl uppercase mt-4">
 
                         FAQ&#39;s
 
@@ -67,7 +67,7 @@ const Footer = () => {
                         <div className="container">
                             <div className="row align-items-center">
                                 <div className="col-lg-6 col-sm-7">
-                                <p className="mb-0 f_400 f_size_18">&#169; GHOSTLERS Inc. 2022 All rights reserved.</p>
+                                <p className="mb-0 f_400 f_size_18">&#169; HOUSE OF ANASAH Inc. 2023 All rights reserved.</p>
                                 </div>
                               
                             </div>

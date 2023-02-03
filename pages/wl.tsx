@@ -1,11 +1,11 @@
 export let array = [
-    "0xbe257fC43bAFc6af01d8C4001a73BF3F0853d0a4",
+    "",
     "0x6828c76453ae55acc715b533e07c4fade03f4182",
     "0x6abfe43351d55836fa1eed7b8797d7b48706fdfd",
     "0x40d51fb4c46f4f2cfbd638ff4a028bc90fa1039c",
     "0xbec4a3f1c8c45642dfdee67d04c6d53441fb3c87",
     "0xd359db95a02b76a5536d23acd8d2467dc977fc96",
-    "0xbe257fC43bAFc6af01d8C4001a73BF3F0853d0a4",
+    "",
     "0xea03d64cefcd26d2bb0b90c5239cfffc7ce721c5",
     "0x547ddd551f8f0cb6ed2bebf1d83cfc2afdfc4a18",
     "0xf6f53ffbcc05a5919a8cab890bf1057e691b3a44",
@@ -1998,5 +1998,5 @@ export let array = [
     "0x82c6b24afe6c71fd5d737e4dd839d5032713f4c9",
     "0x889dcd0c85eb727481d58ec90807c9d3d40a1615",
     "0x7b672bab11fd4c94a3fdc503a58db23c2161e554",
-    "0xbe257fC43bAFc6af01d8C4001a73BF3F0853d0a4"
+    ""
 ]
